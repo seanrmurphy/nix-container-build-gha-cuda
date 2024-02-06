@@ -1,0 +1,24 @@
+---
+name: "Build and deploy site - cuda edition"
+on:  # yamllint disable-line rule:truthy
+  pull_request:
+  push:
+jobs:
+  build:
+    # when running on self-hosted, uncomment the following and comment out the subsequent line 
+    # runs-on: self-hosted 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # when running on a self-hosted nixos system, I removed the following 2 uses...
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - run: |
+          scripts/build_and_push_image.sh
+        env:
+          # this secret must be defined and available to the runner; it's assumed it
+          # has write priviliges on a docker registry
+          DOCKER_ACCESS_TOKEN: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+        if: github.ref == 'refs/heads/main'
