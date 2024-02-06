@@ -1,0 +1,28 @@
+# This content was taken from this repo: https://github.com/mitchellh/flask-nix-example
+
+[project]
+name = "flask-example"
+version = "0.1.0"
+description = ""
+authors = [
+  { name = "Mitchell Hashimoto", email = "<mitchell.hashimoto@gmail.com>" },
+]
+readme = "README.md"
+packages = [{include = "src"}]
+requires-python = ">=3.10"
+license = {text = "MIT"}
+# Flask is necessary to run the application - torch, jupyter and beautifulsoup4 are included to understand how the plumbing works
+dependencies = [
+    "Flask>=2.2.3",
+    "torch>=2.0.0",
+  #  "jupyter>=1.0.0",
+  #  "beautifulsoup4",
+]
+
+[project.scripts]
+# we don't include src here because the packages directive above indicates that only content within the src file should be included
+app = 'app:main'
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
