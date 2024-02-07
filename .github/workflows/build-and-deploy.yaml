@@ -6,15 +6,15 @@ on:  # yamllint disable-line rule:truthy
 jobs:
   build:
     # when running on self-hosted, uncomment the following and comment out the subsequent line 
-    runs-on: [ self-hosted, nixos, nvidia-545 ]
-    # runs-on: ubuntu-latest
+    # runs-on: [ self-hosted, nixos, nvidia-545 ]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       # when running on a self-hosted nixos system, I removed the following 2 uses...
-      #- uses: DeterminateSystems/nix-installer-action@main
-      #- uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - run: |
           scripts/build_and_push_image.sh
         env:

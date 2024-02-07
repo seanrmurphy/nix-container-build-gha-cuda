@@ -2,7 +2,7 @@
 
 This is a simple testing repo I used to understand how to build python environments which require CUDA
 using github actions with nix. It's a small modification to [this git repo](https://github.com/seanrmurphy/nix-container-build-gha). I wrote up a commentary on this 
-work in [this medium post](https://medium.com/@seanrmurphy/building-container-images-using-nix-and-github-actions-ba548ab9080d).
+work in [this medium post](https://seanrmurphy.medium.com/building-cuda-images-on-github-runners-with-nix-9b5daa2f6f92). 
 
 This is the public version of the repo which anyone can look through; I also maintain a private version 
 which is linked to some self hosted github runners - I don't want to link the public version to any such
